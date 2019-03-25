@@ -1,0 +1,73 @@
+{% extends "main.html" %}
+{% block content %}
+
+            <!-- nav area start -->
+            <!-- side bar -->
+            <div class="wrapper">
+                <nav id="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Categories</h3>
+                        <strong>CT</strong>
+                    </div>
+
+                    <ul class="list-unstyled components">
+                        {% for c in categories %}
+                        <li>
+                            <a href="{{url_for('showCategoryItems', category = c.name)}}">
+                                {{c.name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <ul class="list-unstyled CTAs">
+                        <li>
+                            <a href="https://github.com/yusefrich/PT--WP--UP--catalog-web-application" target="_blank" class="download">
+                                <i class="fab fa-2x fa-github"></i>
+                                View source
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="content">
+                    <div class="content-padding">
+                        {% include "navbar.html" %}
+                        <!-- nav area end -->
+
+                        {% include "flash_message.html" %}
+
+                        <!-- banner area start -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h1>Store here all your items catalog!</h1>
+                                    <span>This application was made using flask and python, fell free to use it and store
+                                    all your items in this catalog, you can see all the source code from this application
+                                    in the link on the left</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <img class="img-fluid" src="{{ url_for('static', filename='img/banner-img.png') }}" alt="snowboarding banner image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid green-content-bg content-padding">
+                {%if latest_items%}
+                <div class="content-gap">
+                    <h3 class="text-light">Latest items</h3>
+                    <ul class="list-group">
+                        {% for i in latest_items %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{url_for('showItem', category = i.name, item = i.name)}}">
+                                {{i.name}}
+                            </a>
+                                <span class="badge badge-primary badge-pill">{{i.category}}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {%endif%}
+            </div>
+{% endblock %}

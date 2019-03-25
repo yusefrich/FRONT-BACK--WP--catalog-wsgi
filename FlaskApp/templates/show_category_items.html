@@ -1,0 +1,71 @@
+{% extends "main.html" %}
+{% block content %}
+
+            <!-- nav area start -->
+            <!-- side bar -->
+            <div class="wrapper">
+                <nav id="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Categories</h3>
+                        <strong>CT</strong>
+                    </div>
+
+                    <ul class="list-unstyled components">
+                        {% for c in categories %}
+                        <li>
+                            <a href="{{url_for('showCategoryItems', category = c.name)}}">
+                                {{c.name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <ul class="list-unstyled CTAs">
+                        <li>
+                            <a href="https://github.com/yusefrich/PT--WP--UP--catalog-web-application" target="_blank" class="download">
+                                <i class="fab fa-2x fa-github"></i>
+                                View source
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="content">
+                    <div class="content-padding">
+                        {% include "navbar.html" %}
+                        <!-- nav area end -->
+
+                        {% include "flash_message.html" %}
+
+                        <!-- banner area start -->
+                        <div class="container">
+                            <!-- list of items -->
+                            <h3>{{current_category.name}} items</h3>
+                            <ul class="list-group">
+                                <!-- items list -->
+
+                                {% for i in items %}
+                                    <li class="list-group-item   align-items-center">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                <a class="mr-4" href="{{url_for('showItem', category = current_category.name, item = i.name)}}">
+                                                        {{i.name}}
+                                                </a>
+                                            </div>
+                                                {%if logged_user == i.user_id%}
+                                                <div class="col-3 ">
+                                                    <a class=" mr-4 btn btn-success" href="{{url_for('editItem', item = i.name)}}">edit</a>
+                                                </div>
+                                                <div class="col-3 " >
+                                                    <a class=" mr-4 btn btn-danger" href="{{url_for('deleteItem', item = i.name)}}">delete</a>
+                                                </div>
+                                                {%endif%}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
