@@ -21,7 +21,8 @@
 
 
     <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+    </script>
 
     <script src="//apis.google.com/js/platform.js?onload=start"> </script>
 
@@ -73,7 +74,7 @@
                         <ul class="list-unstyled components">
                             <li>
                                 <div id="signinButton">
-                                    <span class="g-signin" data-scope="openid" data-clientid={{client_id}}
+                                    <span class="g-signin" data-scope="openid email" data-clientid={{client_id}}
                                         data-redirecturi="postmessage" data-accesstype="offline"
                                         data-cookiepolicy="single_host_origin" data-callback="signInCallback"
                                         data-approvalprompt="force">
