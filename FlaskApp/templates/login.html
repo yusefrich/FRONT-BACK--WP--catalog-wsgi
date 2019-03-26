@@ -6,8 +6,6 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="google-signin-client_id" content="{{client_id}}">
-
     <title>Catalog Application Example</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -23,8 +21,7 @@
 
 
     <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
     <script src="//apis.google.com/js/platform.js?onload=start"> </script>
 
@@ -75,22 +72,14 @@
 
                         <ul class="list-unstyled components">
                             <li>
-                                <div class="g-signin2" data-onsuccess="signInCallback"></div>
-
-                                <!-- 
-
-                                    <div id="signinButton">
-                                        <span class="g-signin" 
-                                        data-scope="openid email" 
-                                        data-clientid={{client_id}}
-                                        data-redirecturi="postmessage" 
-                                        data-accesstype="offline"
-                                        data-cookiepolicy="single_host_origin" 
-                                        data-callback="signInCallback"
+                                <div id="signinButton">
+                                    <span class="g-signin" data-scope="openid" data-clientid={{client_id}}
+                                        data-redirecturi="postmessage" data-accesstype="offline"
+                                        data-cookiepolicy="single_host_origin" data-callback="signInCallback"
                                         data-approvalprompt="force">
                                     </span>
-                                -->
-                                    <!-- nav area start -->
+                                </div>
+                                <!-- nav area start -->
                             </li>
                         </ul>
 
@@ -107,11 +96,10 @@
 
                     <div id="content" class="custom-parallax">
                     </div>
-                </div>
 
+                </div>
             </div>
-    </div>
-    </section>
+        </section>
     </div>
     {% include "footer.html" %}
 
@@ -141,7 +129,7 @@
                         } else {
                             $('#result').html(
                                 'Failed to make a server-side call. Check your configuration and console.'
-                                );
+                            );
                         }
                     }
 
