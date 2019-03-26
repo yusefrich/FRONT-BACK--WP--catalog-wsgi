@@ -18,10 +18,10 @@ import requests
 app = Flask(__name__)
 
 CLIENT_ID = json.loads(
-    open('app_secrets/client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/FlaskApp/FlaskApp/client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Catalog Menu Application"
 
-engine = create_engine('postgresql://catalogitems:catalog@localhost/catalog')
+engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
 Base.metadata.bind = engine
 session = scoped_session(sessionmaker(bind=engine))
 
