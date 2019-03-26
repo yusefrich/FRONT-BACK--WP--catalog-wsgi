@@ -1,3 +1,0 @@
-https://github.com/otsop110/fullstack-nanodegree-linux-server-configuration
-https://github.com/yusefrich/WP--catalog-wsgi
-https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
